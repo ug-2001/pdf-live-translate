@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <title>PDF Live Translate - 设置</title>
+    <link rel="stylesheet" href="options.css" />
+  </head>
+  <body>
+    <main>
+      <h1>PDF 实时翻译 · 设置</h1>
+      <p class="note">
+        API Key 只保存在本机的 <code>chrome.storage.local</code>，不会上传到任何服务器，也不会写进源码。
+      </p>
+
+      <form id="form">
+        <label>
+          <span>翻译引擎</span>
+          <select id="provider">
+            <option value="openai">OpenAI 兼容接口（推荐：DeepSeek / Kimi / 通义等）</option>
+            <option value="google">免费 Google 接口（无需 Key，国内可能连不上）</option>
+          </select>
+        </label>
+
+        <div id="openaiFields">
+          <label>
+            <span>Base URL</span>
+            <input id="baseUrl" type="url" placeholder="https://api.deepseek.com" />
+            <em>只填到域名和版本，不带 /chat/completions。DeepSeek 填 https://api.deepseek.com</em>
+          </label>
+
+          <label>
+            <span>模型</span>
+            <input id="model" type="text" placeholder="deepseek-chat" />
+          </label>
+
+          <label>
+            <span>API Key</span>
+            <input id="apiKey" type="password" placeholder="sk-..." autocomplete="off" />
+          </label>
+        </div>
+
+        <label>
+          <span>目标语言</span>
+          <input id="target" type="text" value="简体中文" />
+        </label>
+
+        <label>
+          <span>每批最多段数</span>
+          <input id="batchSize" type="number" min="1" max="4" value="4" />
+          <em>参考 youtube-digest 的做法：小批次更容易对齐，失败重试也不浪费额度。</em>
+        </label>
+
+        <label>
+          <span>每批最多字符</span>
+          <input id="batchChars" type="number" min="500" max="12000" value="3000" />
+        </label>
+
+        <label class="row">
+          <span>打开 PDF 后自动翻译可见段落</span>
+          <input id="autoTranslate" type="checkbox" checked />
+        </label>
+
+        <div class="actions">
+          <button type="submit" class="primary">保存</button>
+          <button type="button" id="test">测试连接</button>
+          <button type="button" id="clearCache">清空翻译缓存</button>
+        </div>
+        <div id="msg"></div>
+      </form>
+    </main>
+    <script src="options.js" type="module"></script>
+  </body>
+</html>

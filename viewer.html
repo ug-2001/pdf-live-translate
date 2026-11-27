@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <title>PDF 实时翻译</title>
+    <link rel="stylesheet" href="viewer.css" />
+  </head>
+  <body>
+    <header id="toolbar">
+      <div class="left">
+        <strong id="docTitle">PDF 实时翻译</strong>
+        <span id="pageInfo" class="muted"></span>
+      </div>
+      <div class="right">
+        <label class="switch"><input id="showPage" type="checkbox" checked /> 原文页</label>
+        <label class="switch"><input id="showTr" type="checkbox" checked /> 显示译文</label>
+        <button id="modeBtn" title="在页面图与纯文本之间切换">图文对照</button>
+        <span class="fsGroup">
+          <button id="fsDown" title="英文字号缩小">A−</button>
+          <span id="fsLabel" class="muted">13</span>
+          <button id="fsUp" title="英文字号放大">A+</button>
+        </span>
+        <button id="zoomOut" title="缩小">−</button>
+        <span id="zoomLabel" class="muted">100%</span>
+        <button id="zoomIn" title="放大">+</button>
+        <span id="status" class="status"></span>
+        <a id="settingsLink" href="options.html" target="_blank" class="link">设置</a>
+      </div>
+    </header>
+
+    <section id="empty">
+      <h2>打开一个 PDF</h2>
+      <p class="muted">
+        拖入文件、选择本地文件，或粘贴一个 PDF 链接（需要登录的站点请先在浏览器里登录，扩展会带上 cookie）。
+      </p>
+      <input id="fileInput" type="file" accept="application/pdf,.pdf" />
+      <div class="urlRow">
+        <input id="urlInput" type="url" placeholder="https://example.com/paper.pdf" />
+        <button id="urlOpen">打开</button>
+      </div>
+    </section>
+
+    <main id="pages"></main>
+    <div id="dropHint">松开即可打开 PDF</div>
+
+    <script type="module" src="viewer.js"></script>
+  </body>
+</html>

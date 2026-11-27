@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <title>PDF Live Translate</title>
+    <style>
+      :root { color-scheme: light dark; }
+      body {
+        width: 300px; margin: 0; padding: 14px 14px 10px;
+        font: 13px/1.5 -apple-system, "Segoe UI", "Microsoft YaHei", sans-serif;
+      }
+      h1 { font-size: 14px; margin: 0 0 10px; font-weight: 600; }
+      button {
+        width: 100%; padding: 9px 10px; margin-bottom: 7px; cursor: pointer;
+        border: 1px solid #d0d3d8; border-radius: 8px; background: #fff;
+        font: inherit; text-align: left;
+      }
+      button.primary { background: #2563eb; border-color: #2563eb; color: #fff; }
+      button:disabled { opacity: .5; cursor: not-allowed; }
+      .hint { color: #6b7280; font-size: 12px; margin: 4px 0 8px; }
+      .row { display: flex; gap: 8px; align-items: center; }
+      a { color: #2563eb; text-decoration: none; font-size: 12px; }
+      #status { font-size: 12px; color: #b45309; min-height: 16px; margin-top: 2px; }
+    </style>
+  </head>
+  <body>
+    <h1>PDF 实时翻译</h1>
+    <button id="current" class="primary" disabled>检测当前页面…</button>
+    <button id="localBtn">打开本地 PDF 文件 / 粘贴链接</button>
+    <p class="hint">翻译引擎与 API Key 在设置里填写，只保存在本机。</p>
+    <div class="row"><a id="settings" href="options.html" target="_blank">打开设置</a></div>
+    <div id="status"></div>
+    <script src="popup.js"></script>
+  </body>
+</html>
